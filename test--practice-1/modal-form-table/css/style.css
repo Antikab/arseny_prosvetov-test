@@ -1,0 +1,1085 @@
+/* Загрузка шрифтов */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+/* по умолчанию */
+* {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	list-style-type: none;
+
+	font-family: 'PT Sans', sans-serif;
+	/*   outline: 1px solid darkred; */
+}
+
+/* Базовый размер шрифта 16 пикселей */
+html {
+	font-size: 16px;
+
+}
+
+/* Применение шрифта Montserrat к заголовкам */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Montserrat', sans-serif;
+	font-style: normal;
+	font-weight: 800;
+	font-size: 1.75rem;
+	line-height: 2.2rem;
+	/* font-size: 28px;
+	line-height: 34px; */
+}
+
+/* Сглаживание шрифтов */
+body {
+	-webkit-font-smoothing: antialiased;
+	/* для Safari, Chrome и Opera */
+	-moz-osx-font-smoothing: grayscale;
+	/* для Firefox на Mac OS */
+	font-smooth: always;
+	/* для других браузеров */
+}
+
+
+/* Мобильная адаптация */
+/* Правила стилей для устройств с шириной экрана до 767 пикселей */
+@media (max-width: 640px) {
+	html {
+		font-size: 14px;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-size: 1.5rem;
+		line-height: 1.8rem;
+		text-align: center;
+	}
+
+	/* Блок с логотипом */
+	.container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-content: space-between;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+	}
+
+	.inputs {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		margin-bottom: 11%;
+	}
+
+	.logo__container {
+		position: relative;
+		display: flex;
+		justify-content: flex-end;
+		left: 1.6%;
+		top: 1.6%;
+		transform: translateX(0);
+	}
+
+	.logo__container::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+		border-radius: 100%;
+		background-color: #000000;
+		opacity: 0.6;
+
+		z-index: 1;
+	}
+
+	img {
+		width: 15vh;
+		height: 15vh;
+
+		text-align: center;
+
+		border-radius: 100%;
+	}
+
+	.svg__logo_icon {
+		position: absolute;
+		top: 28%;
+		left: 42%;
+
+		z-index: 2;
+	}
+
+	.svg__logo_close {
+		position: absolute;
+		top: 4%;
+		right: 4%;
+
+		z-index: 3;
+	}
+
+	/* Блок кнопки */
+	.button {
+		padding: 14px 20px 16px;
+
+		font-size: 1.15rem;
+		font-weight: bold;
+
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+
+	/* Модификаторы кнопки */
+	.button_modal-open {
+		position: absolute;
+		top: 40%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		padding: 12px;
+
+		font-size: 1.2rem;
+
+		background-color: #5970f8;
+		color: #fff;
+	}
+
+	.button_modal-open:hover {
+		background: #3f51b5;
+		color: #ffffc7;
+	}
+
+	/* Блок кнопки отправки */
+	.button_submit {
+		width: 100%;
+
+		margin-top: 10%;
+		margin-bottom: 1%;
+		padding: 1%;
+
+		font-family: 'Lato', sans-serif;
+		font-weight: 500;
+		font-size: 1rem;
+		line-height: 2rem;
+		text-align: center;
+
+		background: #E5266E;
+		color: #FFFFFF;
+		border-radius: 4px;
+	}
+
+	.button_submit:hover {
+		background: #cd2364;
+		color: #ffffc7;
+	}
+
+	/* Блок кнопки отправки - неактивна */
+	.button_disabled {
+		background-color: gray;
+		color: white;
+	}
+
+	.button_disabled:hover {
+		background-color: rgb(172, 171, 171);
+		color: white;
+		cursor: not-allowed;
+	}
+
+	/* Блок кнопки отмены */
+	.button_cancel {
+		margin: 1%;
+		padding: 0px;
+
+		font-weight: 400;
+		font-size: 1rem;
+		line-height: 1.6rem;
+
+		background-color: inherit;
+		color: #0848C0;
+	}
+
+	.button_cancel:hover {
+		color: #738fc4;
+	}
+
+	/* Блок модального окна */
+	.modal {
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+		width: 100%;
+		height: 100vh;
+
+		background-color: rgba(0, 0, 0, 0.42);
+
+		z-index: 99999;
+	}
+
+	/* Модификаторы модального окна */
+	.modal_opened {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		align-content: center;
+		flex-wrap: wrap;
+	}
+
+	/* Блок контента модального окна */
+	.modal__title {
+		margin-bottom: 10px;
+
+		text-align: center;
+
+	}
+
+	.modal__content {
+		height: 98vh;
+		width: inherit;
+
+		margin: 10% 5%;
+		padding: 2% 5%;
+
+		background-color: #fff;
+		border-radius: 12px;
+	}
+
+	/* Блок формы */
+	.form {
+		display: flex;
+		flex-direction: column;
+
+		width: 100%;
+		height: 24px;
+
+		color: #0C1014;
+	}
+
+	.form__wrapper {
+		width: 100%;
+		margin-top: 5%;
+	}
+
+	/* Блок метки */
+
+	/* -скрытый текст- */
+	.form__label-hint {
+		position: absolute;
+		clip: rect(1px, 1px, 1px, 1px);
+
+		width: 1px;
+		height: 1px;
+
+		font-size: 1px;
+		font-weight: 700;
+		text-decoration: none;
+		text-align: left;
+
+		color: #888;
+	}
+
+	.span__logo {
+		position: absolute;
+		top: -13%;
+		right: 18%;
+
+		font-weight: 600;
+		font-size: 0.88rem;
+		line-height: 1rem;
+
+		color: #6A6E72;
+	}
+
+	.span__logo::before {
+		content: "*";
+		position: absolute;
+		left: -15px;
+		top: 53%;
+		transform: translateY(-30%) rotate(30deg);
+
+		margin: 0;
+		padding: 0;
+
+		font-size: 1.8rem;
+		font-weight: 600;
+		line-height: 2rem;
+
+		color: #D90000;
+	}
+
+	.span__logo_file {
+		position: absolute;
+		top: 48%;
+		right: 30%;
+
+		font-style: normal;
+		font-weight: 400;
+		font-size: 1.15rem;
+		line-height: 1.75rem;
+
+		text-align: center;
+		/* text-decoration-line: underline; */
+		/* у буквы "р" внизу хвостик не полностью зачеркнут поэтому этот стиль не подходит  */
+		color: #FFFFFF;
+		z-index: 13;
+	}
+
+	.span__logo_file::before {
+		content: "";
+		position: absolute;
+		top: 40%;
+		left: 0;
+		right: 0;
+		width: 100%;
+		height: 3%;
+
+		margin: auto;
+
+		background-color: #ffffff;
+	}
+
+	.span__logo_file::after {
+		content: "";
+		position: absolute;
+		top: 90%;
+		left: 0;
+		right: 0;
+		width: 51%;
+		height: 3%;
+
+		margin: auto;
+
+		background-color: #ffffff;
+	}
+
+	.span__required {
+		position: absolute;
+
+		margin-left: 24px;
+		margin-top: 8px;
+
+		font-size: 0.76rem;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 1rem;
+
+		color: #6A6E72;
+	}
+
+	.span__required::before {
+		content: "*";
+		position: absolute;
+		left: -15px;
+		top: 53%;
+		transform: translateY(-20%) rotate(30deg);
+
+		margin: 0;
+		padding: 0;
+
+		font-size: 1.75rem;
+		font-weight: 600;
+		line-height: 1rem;
+
+		color: #D90000;
+	}
+
+	.span__required_select {
+		position: absolute;
+
+		margin-left: 24px;
+		margin-top: 28px;
+
+		font-size: 0.76rem;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 1rem;
+
+		color: #6A6E72;
+	}
+
+	.span__required_select::before {
+		content: "*";
+		position: absolute;
+		left: -16px;
+		top: 53%;
+		transform: translateY(-20%) rotate(30deg);
+
+		margin: 0;
+		padding: 0;
+
+		font-size: 1.75rem;
+		font-weight: 600;
+		line-height: 1rem;
+
+		color: #D90000;
+	}
+
+	.span__required:last-of-type {}
+
+	.span__director {
+		transform: translateY(334%);
+
+		margin-left: 15px;
+		margin-top: -15px;
+
+		font-size: 0.75rem;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 1rem;
+
+		color: #6A6E72;
+	}
+
+	/* Блок раскрывающегося списка */
+
+	.label_direction {
+		margin-top: 7px;
+	}
+
+	.select__direction {
+		width: 100%;
+		height: 100%;
+
+		margin-top: 4.5%;
+		margin-bottom: -2%;
+		padding: 1% 2%;
+
+		line-height: 1.5rem;
+		font-size: 1rem;
+
+		background-color: #FFFFFF;
+		background-image: url(../svg/input/Group.svg);
+		background-repeat: no-repeat;
+		background-size: 20px 25px;
+		background-position: right 4% bottom 60%;
+
+		border: 1px solid #D6DADE;
+		border-radius: 2px;
+
+		outline: none;
+		cursor: pointer;
+	}
+
+	.select__direction:focus {
+		border: 1px solid #555f69;
+	}
+
+	.select__direction:hover {
+		background-color: #f9f9f9;
+	}
+
+	/* Блок поля ввода */
+	.form__input {
+		padding: 3% 2%;
+
+		font-size: 1rem;
+
+		background: #FFFFFF;
+		border: 1px solid #D6DADE;
+		border-radius: 2px;
+		outline: none;
+	}
+
+	/* Модификаторы поля ввода */
+	.form__input:focus {
+		border: 1px solid #555f69;
+	}
+
+	.form__input_type_text {
+		width: 558px;
+		height: 200%;
+
+		padding-block: 1rem;
+
+		color: #0C1014;
+	}
+
+	.form__input_type_text:last-child {
+		padding-bottom: 1%;
+		padding-top: 1%;
+	}
+
+	.form__input_type_organization_name,
+	.form__input_type_tel,
+	.form__input_type_email,
+	.form__input_type_text {
+		width: 100%;
+		height: 150%;
+		margin-top: 1%;
+		padding: 1% 2%;
+
+		font-style: normal;
+		font-weight: 400;
+		font-size: 1rem;
+		line-height: 1.55rem;
+
+		color: #0C1014;
+	}
+
+	.form__input_type_organization_name::placeholder,
+	.form__input_type_tel::placeholder,
+	.form__input_type_email::placeholder,
+	.form__input_type_text::placeholder {
+		opacity: 0.54;
+	}
+
+	/* -- Логотипы сайтов -- */
+	#website,
+	#vk,
+	#ok,
+	#facebook,
+	#instagram,
+	#youtube {
+		background-repeat: no-repeat;
+		background-size: 40% 40%;
+		background-position: right -25% bottom 50%;
+	}
+
+	#website {
+		background-image: url(../svg/input/global\ 1.svg);
+	}
+
+	#vk {
+		background-image: url(../svg/input/Group\ 596.svg);
+	}
+
+	#ok {
+		background-image: url(../svg/input/odnoklassniki\ 3.svg);
+	}
+
+	#facebook {
+		background-image: url(../svg/input/Icon.svg);
+	}
+
+	#instagram {
+		background-image: url(../svg/input/Instagram_Color_icon-icons.com_71811\ 1.svg);
+	}
+
+	#youtube {
+		background-image: url(../svg/input/youtube\ 2.svg);
+	}
+}
+
+/* Правила стилей для устройств с шириной экрана от 768 пикселей */
+@media (min-width: 641px) {
+	html {
+		font-size: 16px;
+	}
+
+	/* Блок с логотипом */
+	.container {
+		display: flex;
+		align-items: center;
+	}
+
+	.inputs {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.logo__container {
+		position: relative;
+		display: flex;
+		justify-content: flex-end;
+		left: 18.5%;
+		top: 7.5%;
+	}
+
+	.logo__container::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+		background-color: #000000;
+		border-radius: 100%;
+
+		opacity: 0.6;
+		z-index: 1;
+	}
+
+
+	img {
+		width: 163.33px;
+		height: 163.33px;
+
+		text-align: center;
+
+		border-radius: 100%;
+	}
+
+	.svg__logo_icon {
+		position: absolute;
+		top: 25%;
+		left: 40%;
+
+		z-index: 2;
+	}
+
+	.svg__logo_close {
+		position: absolute;
+		top: 6%;
+		right: 1%;
+
+		z-index: 3;
+	}
+
+	/* Блок кнопки */
+	.button {
+		padding: 14px 20px 16px;
+
+		font-size: 1.15rem;
+		font-weight: bold;
+
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+
+	/* Модификаторы кнопки */
+	.button_modal-open {
+		position: absolute;
+		top: 40%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		color: #fff;
+		background-color: #5970f8;
+	}
+
+	.button_modal-open:hover {
+		background: #3f51b5;
+		color: #ffffc7;
+	}
+
+	/* Блок кнопки отправки */
+	.button_submit {
+		width: 557px;
+		height: 48px;
+
+		margin-top: 50px;
+
+		font-family: 'Lato', sans-serif;
+		font-weight: 500;
+		font-size: 1rem;
+		line-height: 1.1rem;
+		text-align: center;
+
+		background: #E5266E;
+		color: #FFFFFF;
+		border-radius: 4px;
+	}
+
+	.button_submit:hover {
+		background: #cd2364;
+		color: #ffffc7;
+	}
+
+	/* Блок кнопки отправки - неактивна */
+	.button_disabled {
+		background-color: gray;
+		color: white;
+	}
+
+	.button_disabled:hover {
+		background-color: rgb(172, 171, 171);
+		color: white;
+		cursor: not-allowed;
+	}
+
+	/* Блок кнопки отмены */
+	.button_cancel {
+		transform: translateX(162%);
+
+		padding: 0;
+		margin: 14px 24px;
+
+		font-weight: 400;
+		font-size: 1rem;
+		line-height: 1.6rem;
+
+		background-color: inherit;
+		color: #0848C0;
+	}
+
+	.button_cancel:hover {
+		color: #738fc4;
+	}
+
+	/* Блок модального окна */
+	.modal {
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+		width: 100%;
+		height: 147.5vh;
+
+		background-color: rgba(0, 0, 0, 0.42);
+
+		z-index: 99999;
+	}
+
+	/* Модификаторы модального окна */
+	.modal_opened {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow-y: auto;
+	}
+
+	/* Блок контента модального окна */
+	.modal__title {
+		margin-bottom: 0px;
+	}
+
+	.modal__content {
+		width: 754px;
+		height: 1248px;
+
+		padding: 53px 98px;
+
+		background-color: #fff;
+
+		border-radius: 12px;
+	}
+
+	/* Блок формы */
+	.form {
+		display: flex;
+		flex-direction: column;
+
+		width: 30%;
+		height: 24px;
+
+		color: #0C1014;
+	}
+
+	.form__wrapper {
+		width: 100%;
+		height: 56px;
+		margin-top: 32px;
+	}
+
+	/* Блок метки */
+
+	/* -скрытый текст- */
+	.form__label-hint {
+		position: absolute;
+		clip: rect(1px, 1px, 1px, 1px);
+
+		width: 1px;
+		height: 1px;
+
+		font-size: 1px;
+		font-weight: 700;
+		text-decoration: none;
+		text-align: left;
+
+		color: #888;
+	}
+
+	.span__logo {
+		position: absolute;
+
+		top: -20%;
+		right: 10%;
+
+		font-weight: 600;
+		font-size: 0.88rem;
+		line-height: 1rem;
+
+		color: #6A6E72;
+	}
+
+	.span__logo::before {
+		content: "*";
+		position: absolute;
+		left: -15px;
+		top: 53%;
+		transform: translateY(-30%) rotate(30deg);
+
+		margin: 0;
+		padding: 0;
+
+		font-size: 1.8rem;
+		font-weight: 600;
+		line-height: 2rem;
+
+		color: #D90000;
+	}
+
+	.span__logo_file {
+		position: absolute;
+		top: 47%;
+		right: 27%;
+
+		font-style: normal;
+		font-weight: 400;
+		font-size: 1.15rem;
+		line-height: 1.75rem;
+
+		text-align: center;
+		/* text-decoration-line: underline; */
+		/* у буквы "р" внизу хвостик не полностью зачеркнут поэтому этот стиль не подходит  */
+		color: #FFFFFF;
+
+		z-index: 13;
+	}
+
+	.span__logo_file::before {
+		content: "";
+		position: absolute;
+		top: 1.8vh;
+		left: 0vh;
+		right: 0vh;
+		width: 6.4vh;
+		height: 0.1vh;
+
+		margin: auto;
+
+		background-color: #ffffff;
+	}
+
+	.span__logo_file::after {
+		content: "";
+		position: absolute;
+		top: 4.05vh;
+		left: 0vh;
+		right: 0vh;
+		width: 3.35vh;
+		height: 0.1vh;
+
+		margin: auto;
+
+		background-color: #ffffff;
+	}
+
+
+	.span__required {
+		position: absolute;
+
+		margin-left: 28px;
+		padding: 9px 0 9px;
+
+		font-size: 0.76rem;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 1rem;
+
+		color: #6A6E72;
+	}
+
+	.span__required::before {
+		content: "*";
+		position: absolute;
+		left: -16px;
+		top: 53%;
+		transform: translateY(-20%) rotate(30deg);
+
+		margin: 0;
+		padding: 0;
+
+		font-size: 1.75rem;
+		font-weight: 600;
+		line-height: 1rem;
+
+		color: #D90000;
+	}
+
+	.span__required_select {
+		position: absolute;
+
+		margin-left: 28px;
+		margin-top: 34px;
+
+		font-size: 0.76rem;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 1rem;
+
+		color: #6A6E72;
+	}
+
+	.span__required_select::before {
+		content: "*";
+		position: absolute;
+		left: -16px;
+		top: 53%;
+		transform: translateY(-20%) rotate(30deg);
+
+		margin: 0;
+		padding: 0;
+
+		font-size: 1.75rem;
+		font-weight: 600;
+		line-height: 1rem;
+
+		color: #D90000;
+	}
+
+	.span__director {
+		transform: translateY(334%);
+		margin-left: 15px;
+		margin-top: -15px;
+
+		font-size: 0.75rem;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 1rem;
+
+		color: #6A6E72;
+	}
+
+	/* Блок раскрывающегося списка */
+
+	.label_direction {
+		margin-top: 7px;
+	}
+
+	.select__direction {
+		width: 558px;
+		height: 56px;
+
+		margin-top: 27px;
+		padding: 10px 16px 0;
+
+		font-size: 1rem;
+
+		background-color: #FFFFFF;
+		background-image: url(../svg/input/Group.svg);
+		background-repeat: no-repeat;
+		background-size: 20px 25px;
+		background-position: right 12px center;
+
+		border: 1px solid #D6DADE;
+		border-radius: 2px;
+		outline: none;
+		cursor: pointer;
+	}
+
+	.select__direction:focus {
+		border: 1px solid #555f69;
+	}
+
+	.select__direction:hover {
+		background-color: #f9f9f9;
+	}
+
+	/* Блок поля ввода */
+	.form__input {
+		padding: 8px 16px;
+
+		font-size: 1rem;
+
+		background: #FFFFFF;
+		border: 1px solid #D6DADE;
+		border-radius: 2px;
+		outline: none;
+	}
+
+	/* Модификаторы поля ввода */
+	.form__input:focus {
+		border: 1px solid #555f69;
+	}
+
+	.form__input_type_text {
+		width: 558px;
+		height: 56px;
+
+		padding-block: 1rem;
+		color: #0C1014;
+	}
+
+	.form__input_type_text:last-child {
+		padding-bottom: 8px;
+		padding-top: 8px;
+	}
+
+
+	.form__input_type_organization_name,
+	.form__input_type_tel,
+	.form__input_type_email {
+		width: 362px;
+
+		padding: 22px 16px 8px;
+
+		font-style: normal;
+		font-weight: 400;
+		font-size: 1rem;
+
+		line-height: 1.55rem;
+		color: #0C1014;
+	}
+
+	.form__input_type_organization_name::placeholder,
+	.form__input_type_tel::placeholder,
+	.form__input_type_email::placeholder,
+	.form__input_type_text::placeholder {
+		opacity: 0.54;
+	}
+
+	/* -- Логотипы сайтов -- */
+	#website,
+	#vk,
+	#ok,
+	#facebook,
+	#instagram,
+	#youtube {
+		background-repeat: no-repeat;
+		background-size: 20px 22px;
+		background-position: right 14px bottom 16px;
+	}
+
+	#website {
+		background-image: url(../svg/input/global\ 1.svg);
+	}
+
+	#vk {
+		background-image: url(../svg/input/Group\ 596.svg);
+	}
+
+	#ok {
+		background-image: url(../svg/input/odnoklassniki\ 3.svg);
+	}
+
+	#facebook {
+		background-image: url(../svg/input/Icon.svg);
+		background-position: right 18px bottom 16px;
+	}
+
+	#instagram {
+		background-image: url(../svg/input/Instagram_Color_icon-icons.com_71811\ 1.svg);
+		background-position: right 16px bottom 16px;
+	}
+
+	#youtube {
+		background-image: url(../svg/input/youtube\ 2.svg);
+		background-position: right 14px bottom 16px;
+	}
+}
