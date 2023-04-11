@@ -229,7 +229,7 @@ body {
 		bottom: 0;
 
 		width: 100%;
-		height: 100vh;
+		height: 100%;
 
 		background-color: rgba(0, 0, 0, 0.42);
 
@@ -347,11 +347,11 @@ body {
 	.span__logo_file::before {
 		content: "";
 		position: absolute;
-		top: 40%;
+		top: 22px;
 		left: 0;
 		right: 0;
-		width: 100%;
-		height: 3%;
+		width: 79px;
+		height: 1.5px;
 
 		margin: auto;
 
@@ -361,11 +361,11 @@ body {
 	.span__logo_file::after {
 		content: "";
 		position: absolute;
-		top: 90%;
+		top: 50px;
 		left: 0;
 		right: 0;
-		width: 51%;
-		height: 3%;
+		width: 40px;
+		height: 1.5px;
 
 		margin: auto;
 
